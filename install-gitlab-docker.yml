@@ -1,0 +1,17 @@
+---
+- hosts: local
+  tasks:
+    - name: add pip for docker-py dependency needed to run docker
+      apt: name=python-pip state=latest
+    - name: add docker-py
+      pip:
+        name: docker-py
+        state: present
+    - name: make sure docker is installed
+      apt: name=docker.io state=latest
+    - name: pull gitlab image
+      docker:
+        name: gitlab
+        image: gitlab/gitlab-ce
+        state: present
+  become: yes
