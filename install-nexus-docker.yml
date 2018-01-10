@@ -1,0 +1,9 @@
+---
+- hosts: local
+  tasks:
+    - name: install sonatype nexus image for local artifact repository
+      docker:
+        name: nexus
+        image: sonatype/nexus
+        state: present
+      become: yes

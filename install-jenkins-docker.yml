@@ -1,0 +1,9 @@
+---
+- hosts: local
+  tasks:
+    - name: install jenkins image for local ci/cd build tool 
+      docker:
+        name: jenkins
+        image: jenkins
+        state: present
+      become: yes
